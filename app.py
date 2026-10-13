@@ -25,16 +25,77 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-      .stApp { background: #F8F5FF; color: #2D2142; }
-      [data-testid="stSidebar"] { background: #EEE6FF; }
-      h1, h2, h3 { color: #5B35A6; }
+      /* Main canvas and readable default text */
+      .stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+        background: #F8F5FF !important;
+        color: #302044 !important;
+      }
+      [data-testid="stHeader"] { background: #F8F5FF !important; }
+      [data-testid="stSidebar"] {
+        background: #EEE6FF !important;
+      }
+      [data-testid="stSidebar"] * { color: #302044; }
+      .stApp p, .stApp label, .stApp li, .stApp span,
+      .stApp [data-testid="stMarkdownContainer"] {
+        color: #302044;
+      }
+      h1, h2, h3, h4 { color: #5B35A6 !important; }
+      [data-testid="stCaptionContainer"] p,
+      .stCaption, small { color: #625574 !important; }
+
+      /* Inputs and select boxes: light surfaces with dark text */
+      div[data-baseweb="select"] > div,
+      div[data-baseweb="input"] > div,
+      div[data-baseweb="textarea"] > div,
+      [data-testid="stChatInput"] textarea {
+        background: #FFFFFF !important;
+        color: #302044 !important;
+        border-color: #CBB8F0 !important;
+      }
+      div[data-baseweb="select"] *,
+      div[data-baseweb="input"] *,
+      div[data-baseweb="textarea"] *,
+      [data-testid="stChatInput"] * {
+        color: #302044 !important;
+      }
+      ul[role="listbox"], li[role="option"] {
+        background: #FFFFFF !important;
+        color: #302044 !important;
+      }
+
+      /* Buttons */
       div.stButton > button, div[data-testid="stFormSubmitButton"] > button {
-        background: #7857D9; color: white; border: 0; border-radius: 12px;
+        background: #7857D9 !important;
+        color: #FFFFFF !important;
+        border: 0 !important;
+        border-radius: 12px !important;
+      }
+      div.stButton > button *, div[data-testid="stFormSubmitButton"] > button * {
+        color: #FFFFFF !important;
       }
       div.stButton > button:hover, div[data-testid="stFormSubmitButton"] > button:hover {
-        background: #603DBB; color: white; border: 0;
+        background: #603DBB !important;
+        color: #FFFFFF !important;
       }
-      [data-testid="stChatMessage"] { border-radius: 14px; }
+
+      /* Alerts, cards, chat and file uploader */
+      [data-testid="stAlert"] { border-radius: 12px; }
+      [data-testid="stChatMessage"] {
+        background: #FFFFFF !important;
+        border: 1px solid #E4D8F8;
+        border-radius: 14px;
+      }
+      [data-testid="stFileUploader"] section {
+        background: #FFFFFF !important;
+        border: 1px dashed #A78BFA !important;
+        border-radius: 12px !important;
+      }
+      [data-testid="stFileUploader"] section * { color: #302044 !important; }
+      [data-testid="stExpander"] {
+        background: #FFFFFF !important;
+        border: 1px solid #E4D8F8 !important;
+        border-radius: 12px !important;
+      }
       .study-tag { color: #6941A5; font-weight: 600; }
     </style>
     """,
