@@ -1,0 +1,14 @@
+# Secrets and environment files
+.env
+.streamlit/secrets.toml
+secrets.toml
+*.key
+
+# Python / notebook artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# OS/editor files
+.DS_Store
+.vscode/
