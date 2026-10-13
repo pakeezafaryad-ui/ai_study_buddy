@@ -16,7 +16,7 @@ MAX_CONTEXT_CHARS = 12_000
 
 st.set_page_config(
     page_title=APP_TITLE,
-    page_icon="💜",
+    page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -34,31 +34,45 @@ st.markdown(
       [data-testid="stSidebar"] {
         background: #EEE6FF !important;
       }
-      [data-testid="stSidebar"] * { color: #302044; }
-      .stApp p, .stApp label, .stApp li, .stApp span,
+      [data-testid="stSidebar"] * { color: #302044 !important; }
+      .stApp p, .stApp label, .stApp li,
       .stApp [data-testid="stMarkdownContainer"] {
-        color: #302044;
+        color: #302044 !important;
       }
-      h1, h2, h3, h4 { color: #5B35A6 !important; }
+      h1, h2, h3, h4 { color: #4C287F !important; }
       [data-testid="stCaptionContainer"] p,
-      .stCaption, small { color: #625574 !important; }
+      .stCaption, small { color: #5B4B70 !important; }
 
-      /* Inputs and select boxes: light surfaces with dark text */
+      /* Inputs and select boxes: force light backgrounds and readable text */
       div[data-baseweb="select"] > div,
       div[data-baseweb="input"] > div,
       div[data-baseweb="textarea"] > div,
-      [data-testid="stChatInput"] textarea {
+      [data-testid="stChatInput"] > div,
+      [data-testid="stChatInput"] textarea,
+      [data-testid="stTextInput"] input,
+      [data-testid="stTextArea"] textarea {
         background: #FFFFFF !important;
         color: #302044 !important;
-        border-color: #CBB8F0 !important;
+        border: 1px solid #BDA4E8 !important;
+        opacity: 1 !important;
       }
       div[data-baseweb="select"] *,
       div[data-baseweb="input"] *,
       div[data-baseweb="textarea"] *,
-      [data-testid="stChatInput"] * {
+      [data-testid="stChatInput"] *,
+      [data-testid="stTextInput"] *,
+      [data-testid="stTextArea"] * {
         color: #302044 !important;
+        -webkit-text-fill-color: #302044 !important;
       }
-      ul[role="listbox"], li[role="option"] {
+      input::placeholder, textarea::placeholder,
+      [data-testid="stChatInput"] textarea::placeholder {
+        color: #756586 !important;
+        -webkit-text-fill-color: #756586 !important;
+        opacity: 1 !important;
+      }
+      ul[role="listbox"], li[role="option"],
+      li[role="option"] * {
         background: #FFFFFF !important;
         color: #302044 !important;
       }
@@ -228,7 +242,7 @@ def ask_groq(messages: List[dict]) -> str:
 
 # Sidebar settings
 with st.sidebar:
-    st.markdown("# 💜 AI Study Buddy")
+    st.markdown("# AI Study Buddy")
     st.caption("Learn smarter, one concept at a time.")
     subject = st.selectbox("Choose a subject", ["Computer Science", "Mathematics", "Statistics"])
     level = st.selectbox("Learning level", ["Beginner", "Intermediate", "Advanced", "Mixed levels"])
@@ -259,7 +273,7 @@ if uploaded_files:
 
 study_context = "\n\n---\n\n".join(extracted_parts)
 
-st.title("💜 AI Study Buddy")
+st.title("AI Study Buddy")
 st.markdown("Your personal study partner for **Computer Science, Mathematics, and Statistics**.")
 st.info("Choose a subject and study mode in the sidebar, then ask a question or request a study activity.")
 
@@ -314,4 +328,4 @@ if user_prompt:
                 st.error(answer)
                 st.caption(f"Technical detail: {type(exc).__name__}")
 
-st.caption("Prototype note: private email allowlisting will be added before public deployment.")
+st.caption("Private access controls are not enabled yet. Add verified email allowlisting before sharing this app publicly.")
